@@ -17,8 +17,8 @@ fi
 # Editors
 #
 
-export EDITOR='nano'
-export VISUAL='nano'
+export EDITOR='nvim'
+export VISUAL='nvim'
 export PAGER='less'
 
 #
@@ -32,6 +32,32 @@ fi
 #
 # Paths
 #
+#
+export PATH=/usr/local/opt/go/libexec/bin:$PATH
+export GOPATH=$HOME/programming/go
+export PATH="/usr/local/opt/krb5/bin:$PATH"
+export PATH="/usr/local/opt/krb5/sbin:$PATH"
+export JAVA_HOME=`/usr/libexec/java_home -v 1.8`
+
+export ANDROID_HOME=/Users/$USER/Library/Android/sdk
+export PATH=${PATH}:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
+
+# Flutter
+export PATH=$PATH:/Users/l.cao/programming/flutter/flutter/bin
+
+# Java
+export CLASSPATH=$CLASSPATH:~/programming/java/algs4.jar
+export PATH=~/programming/java:$PATH
+
+# Init jenv
+if which jenv > /dev/null; then eval "$(jenv init -)"; fi
+
+# AutoJump
+[ -f /usr/local/etc/profile.d/autojump.sh ] && . /usr/local/etc/profile.d/autojump.sh
+
+# Python
+
+
 
 # Ensure path arrays do not contain duplicates.
 typeset -gU cdpath fpath mailpath path
@@ -44,6 +70,7 @@ typeset -gU cdpath fpath mailpath path
 # Set the list of directories that Zsh searches for programs.
 path=(
   /usr/local/{bin,sbin}
+  $GOPATH/bin
   $path
 )
 
@@ -61,3 +88,11 @@ export LESS='-F -g -i -M -R -S -w -X -z-4'
 if (( $#commands[(i)lesspipe(|.sh)] )); then
   export LESSOPEN="| /usr/bin/env $commands[(i)lesspipe(|.sh)] %s 2>&-"
 fi
+
+# ENV
+# GIT_TERMINAL_PROMPT=1
+
+# Setting PATH for Python 3.5
+# The orginal version is saved in .zprofile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+export PATH
